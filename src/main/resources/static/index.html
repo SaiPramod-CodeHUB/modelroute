@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ModelRoute</title>
+<style>
+  :root { --bg:#f6f5f1; --panel:#fff; --ink:#1c1c1a; --muted:#6a6963; --line:#e3e1d9; --accent:#8a4b12; --small:#2e7d4f; --large:#7a4bb0; }
+  @media (prefers-color-scheme: dark) { :root { --bg:#141413; --panel:#1e1e1c; --ink:#ecebe5; --muted:#a2a098; --line:#33322e; --accent:#e3a15f; --small:#6cc495; --large:#b99af0; } }
+  * { box-sizing:border-box; } body { margin:0; background:var(--bg); color:var(--ink); font:14px/1.5 ui-sans-serif,system-ui,-apple-system,"Segoe UI",sans-serif; }
+  main { max-width:860px; margin:0 auto; padding:24px 16px 60px; } h1 { font-size:20px; margin:0; } .muted { color:var(--muted); }
+  .card { background:var(--panel); border:1px solid var(--line); border-radius:10px; padding:14px; margin-top:14px; }
+  textarea { width:100%; min-height:70px; font:inherit; color:var(--ink); background:var(--panel); border:1px solid var(--line); border-radius:8px; padding:8px; }
+  button { font:inherit; border:0; border-radius:8px; padding:7px 12px; background:var(--accent); color:#fff; cursor:pointer; }
+  button.ghost { background:transparent; border:1px solid var(--line); color:var(--accent); font-size:12px; padding:4px 8px; margin:3px 3px 0 0; }
+  .big { font-size:22px; font-weight:600; } .small { color:var(--small); } .large { color:var(--large); }
+  input[type=range] { width:100%; } .row { display:flex; gap:16px; flex-wrap:wrap; }
+</style>
+</head>
+<body>
+<main>
+  <h1>ModelRoute</h1>
+  <div class="muted">A distilled small model answers when it's confident; everything else falls back to the large model.</div>
+  <div class="card">
+    <textarea id="t">I was charged twice for order #48213, please fix</textarea>
+    <div id="samples"></div>
+    <div style="margin-top:8px"><button id="go">Classify</button></div>
+    <div id="out" style="margin-top:12px"></div>
+  </div>
+  <div class="card">
+    <div class="row"><div>Threshold <b id="thv"></b></div><div>Requests <b id="req"></b></div><div>Fallback rate <b id="fb"></b></div></div>
+    <input type="range" id="th" min="0.3" max="0.99" step="0.01">
+    <div class="muted" id="model"></div>
+  </div>
+</main>
+<script>
+const S = ['I was charged twice for order #48213, please fix', 'cant get into my acct since yesterday',
+  'yall should really add dark mode', 'Package stuck in Denver for a week.', 'My blender arrived broken. Also, I need an invoice.',
+  'hmm something is off with my account and the billing page'];
+const api = async (p, o) => (await fetch(p, o)).json();
+const post = (p, b) => api(p, { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(b) });
+S.forEach(s => { const b = document.createElement('button'); b.className = 'ghost'; b.textContent = s; b.onclick = () => { t.value = s; go.click(); }; samples.appendChild(b); });
+async function stats() { const s = await api('/api/stats'); thv.textContent = s.threshold.toFixed(2); th.value = s.threshold;
+  req.textContent = s.requests; fb.textContent = (s.fallbackRate * 100).toFixed(1) + '%'; model.textContent = s.router + ' · ' + s.smallModel; }
+go.onclick = async () => { const r = await post('/api/classify', { text: t.value });
+  out.innerHTML = `<div class="big">${r.intent}</div><div>confidence ${r.confidence} · served by <b class="${r.fellBack ? 'large' : 'small'}">${r.servedBy}</b>
+    ${r.fellBack ? `(small model guessed ${r.smallModelGuess} at ${r.smallModelConfidence})` : ''} · ${r.latencyMicros} µs</div>`; stats(); };
+th.oninput = () => thv.textContent = (+th.value).toFixed(2);
+th.onchange = async () => { await post('/api/threshold', { value: +th.value }); stats(); };
+stats();
+</script>
+</body>
+</html>

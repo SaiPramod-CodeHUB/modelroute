@@ -1,0 +1,27 @@
+server:
+  port: ${PORT:8080}
+
+modelroute:
+  # URL of the LoRA model served by finetune/serve.py. Empty = use the in-process distilled model.
+  small-model-url: ${SMALL_MODEL_URL:}
+
+spring:
+  application:
+    name: modelroute
+  ai:
+    model:
+      chat: ${LLM_PROVIDER:none}     # "anthropic" = Claude is the fallback model; "none" = offline stand-in
+      embedding: none
+    anthropic:
+      api-key: ${ANTHROPIC_API_KEY:not-set}
+      chat:
+        options:
+          model: ${ANTHROPIC_MODEL:claude-sonnet-5-5}
+          max-tokens: 100
+          temperature: 0.0
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: health,info,metrics

@@ -1,0 +1,349 @@
+{
+ "note": "5 phrasing families per intent, 2 phrasings each. Phrasing 0 is used for training, phrasing 1 for validation/test only.",
+ "intents": {
+  "BILLING_REFUND": [
+   [
+    "I'd like a refund for order {order}, the {product} wasn't what I expected.",
+    "Can I get my money back for the {product}? Order {order}."
+   ],
+   [
+    "Please refund the {amount} I paid for {product}, I returned it last week.",
+    "Returned the {product} {days} days ago and still no refund of {amount}."
+   ],
+   [
+    "How long does a refund take? I sent back order {order}.",
+    "When will I see the refund for {order} on my card?"
+   ],
+   [
+    "Requesting reimbursement for {product} purchase ({amount}).",
+    "I want the {amount} reimbursed, the {product} is going back."
+   ],
+   [
+    "the {product} went back to you guys ages ago where is my money",
+    "still waiting on my {amount} after returning {product}, what's going on"
+   ]
+  ],
+  "DOUBLE_CHARGE": [
+   [
+    "I was charged twice for order {order}.",
+    "My card shows two charges of {amount} for the same order."
+   ],
+   [
+    "You billed me {amount} two times this month.",
+    "Duplicate charge on my statement for {product}."
+   ],
+   [
+    "Why is there a second {amount} payment on my account?",
+    "There's an extra charge of {amount} I didn't authorize."
+   ],
+   [
+    "Payment for {order} went through twice, please reverse one.",
+    "Got debited {amount} twice, fix it please."
+   ],
+   [
+    "bank says you took {amount} from me 2x for one order",
+    "seeing {amount} pending AND posted for {order}?? thats double"
+   ]
+  ],
+  "LOGIN_ISSUE": [
+   [
+    "I can't log in to my account.",
+    "Login keeps failing on my {device}."
+   ],
+   [
+    "It says invalid credentials even though my password is right.",
+    "Getting an error every time I try to sign in."
+   ],
+   [
+    "My account is locked after too many attempts.",
+    "Two-factor code never arrives so I can't get in."
+   ],
+   [
+    "The sign-in page just spins forever on {device}.",
+    "SSO login loops back to the start page."
+   ],
+   [
+    "cant get into my acct since yesterday",
+    "app kicks me out right after i enter my email, help"
+   ]
+  ],
+  "PASSWORD_RESET": [
+   [
+    "How do I reset my password?",
+    "I forgot my password, please help me reset it."
+   ],
+   [
+    "The password reset email never arrived.",
+    "Reset link says it has expired."
+   ],
+   [
+    "I need to change my password, where is that setting?",
+    "Can you send me a new password reset link?"
+   ],
+   [
+    "Reset password button does nothing on {device}.",
+    "I set a new password but it won't accept it."
+   ],
+   [
+    "forgot pw again lol how do i make a new one",
+    "need a new password, the old one is gone from my head"
+   ]
+  ],
+  "SHIPPING_DELAY": [
+   [
+    "My order {order} hasn't arrived yet.",
+    "Where is my package? It was supposed to come {days} days ago."
+   ],
+   [
+    "Tracking hasn't updated for {days} days on {order}.",
+    "My {product} is late, the delivery date passed."
+   ],
+   [
+    "Order {order} says shipped but nothing since.",
+    "When will my {product} be delivered?"
+   ],
+   [
+    "The courier keeps postponing delivery of {order}.",
+    "Package stuck in {city} for a week."
+   ],
+   [
+    "still no {product} and its been {days} days",
+    "ordered {product} forever ago, nothing showed up yet"
+   ]
+  ],
+  "ADDRESS_CHANGE": [
+   [
+    "I need to change the shipping address for order {order}.",
+    "Can you update my delivery address to {city}?"
+   ],
+   [
+    "I moved, please ship {order} to my new address.",
+    "Wrong address on my order, can I fix it?"
+   ],
+   [
+    "Is it possible to redirect {order} to my office in {city}?",
+    "Please deliver to my neighbor's address instead."
+   ],
+   [
+    "Update shipping info on {order} before it ships.",
+    "Typo in my street name on order {order}."
+   ],
+   [
+    "send it to my new place in {city} pls",
+    "oops i put my old address, can u change it for {order}"
+   ]
+  ],
+  "DAMAGED_ITEM": [
+   [
+    "My {product} arrived broken.",
+    "The {product} in order {order} is damaged."
+   ],
+   [
+    "The box was crushed and the {product} is cracked.",
+    "Received a defective {product}, it won't turn on."
+   ],
+   [
+    "Screen on the {product} is shattered out of the box.",
+    "Parts are missing and the {product} is dented."
+   ],
+   [
+    "The {product} stopped working after one day.",
+    "{product} came with a big scratch and a bent corner."
+   ],
+   [
+    "{product} showed up in pieces",
+    "opened the package and the {product} is busted"
+   ]
+  ],
+  "CANCEL_SUBSCRIPTION": [
+   [
+    "I want to cancel my subscription.",
+    "Please cancel my {plan} plan."
+   ],
+   [
+    "How do I stop my membership from renewing?",
+    "Turn off auto-renewal for my account."
+   ],
+   [
+    "I'd like to close my account and stop billing.",
+    "Cancel my {plan} subscription effective today."
+   ],
+   [
+    "Don't charge me next month, I'm done with the service.",
+    "End my {plan} membership please."
+   ],
+   [
+    "get me off the {plan} plan i dont use it",
+    "how do i quit this subscription thing"
+   ]
+  ],
+  "UPGRADE_PLAN": [
+   [
+    "I want to upgrade to the {plan} plan.",
+    "How do I switch to {plan}?"
+   ],
+   [
+    "Can I move my team to a bigger plan?",
+    "What does it cost to upgrade from Basic to {plan}?"
+   ],
+   [
+    "We need more seats, please upgrade our account.",
+    "Interested in the {plan} tier for our company."
+   ],
+   [
+    "Upgrade me to annual {plan} billing.",
+    "Is there a discount if we go {plan} for a year?"
+   ],
+   [
+    "wanna go {plan}, how",
+    "need the bigger plan for more users, set it up?"
+   ]
+  ],
+  "BUG_REPORT": [
+   [
+    "The app crashes when I open {feature}.",
+    "I found a bug in {feature} on {device}."
+   ],
+   [
+    "{feature} shows an error 500.",
+    "Export to CSV produces an empty file."
+   ],
+   [
+    "The dashboard doesn't load on {device}.",
+    "Clicking save in {feature} does nothing."
+   ],
+   [
+    "Notifications are duplicated since the last update.",
+    "{feature} freezes and I have to restart the app."
+   ],
+   [
+    "{feature} is broken again smh",
+    "app keeps crashing on {device} whenever i hit {feature}"
+   ]
+  ],
+  "FEATURE_REQUEST": [
+   [
+    "It would be great if you added dark mode.",
+    "Please add {feature} to the mobile app."
+   ],
+   [
+    "Can you support exporting reports to PDF?",
+    "Feature request: integration with {feature}."
+   ],
+   [
+    "I wish {feature} had keyboard shortcuts.",
+    "Any plans to add multi-language support?"
+   ],
+   [
+    "Suggestion: let us schedule reports weekly.",
+    "Would love a way to bulk edit in {feature}."
+   ],
+   [
+    "yall should really add {feature}",
+    "pls make it possible to share boards with guests"
+   ]
+  ],
+  "INVOICE_REQUEST": [
+   [
+    "Can you send me an invoice for order {order}?",
+    "I need a receipt for my {amount} payment."
+   ],
+   [
+    "Please email the invoice with our VAT number.",
+    "Where can I download my invoices?"
+   ],
+   [
+    "Our accounting team needs invoices for the last {days} days.",
+    "Send a copy of the {plan} invoice for last month."
+   ],
+   [
+    "Invoice for {order} has the wrong company name.",
+    "I need an itemized receipt for expense reporting."
+   ],
+   [
+    "need the invoice for {order} for my boss",
+    "can i get a receipt pdf for the {amount} charge"
+   ]
+  ]
+ },
+ "slots": {
+  "product": [
+   "blender",
+   "headphones",
+   "standing desk",
+   "coffee grinder",
+   "monitor",
+   "backpack",
+   "smartwatch",
+   "air fryer",
+   "keyboard",
+   "lamp",
+   "phone case",
+   "office chair"
+  ],
+  "order": [
+   "#48213",
+   "A-10293",
+   "order 77120",
+   "#90311",
+   "Q-5521",
+   "#12004",
+   "B-88013"
+  ],
+  "amount": [
+   "$49.99",
+   "$120",
+   "$15.00",
+   "$310.45",
+   "\u20ac89",
+   "$9.99",
+   "$1,250"
+  ],
+  "days": [
+   "3",
+   "5",
+   "7",
+   "10",
+   "12",
+   "14",
+   "21"
+  ],
+  "plan": [
+   "Pro",
+   "Business",
+   "Premium",
+   "Team",
+   "Enterprise",
+   "Plus"
+  ],
+  "feature": [
+   "the calendar",
+   "reports",
+   "the editor",
+   "file upload",
+   "search",
+   "the dashboard",
+   "Slack",
+   "Google Drive",
+   "Zapier",
+   "checkout"
+  ],
+  "device": [
+   "iPhone",
+   "Android",
+   "Chrome",
+   "Safari",
+   "my iPad",
+   "Windows",
+   "the desktop app"
+  ],
+  "city": [
+   "Austin",
+   "Denver",
+   "Chicago",
+   "Seattle",
+   "Boston",
+   "Toronto"
+  ]
+ }
+}

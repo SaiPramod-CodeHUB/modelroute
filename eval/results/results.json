@@ -1,0 +1,188 @@
+{
+  "goldTrain" : 1500,
+  "pool" : 6000,
+  "validation" : 1000,
+  "test" : 2000,
+  "largeModel" : "large (offline stand-in)",
+  "smallFeatures" : "word 1-2grams, 2^15 dims",
+  "smallParams" : 125880,
+  "temperature" : 0.7000000000000001,
+  "threshold" : {
+    "threshold" : 0.3,
+    "fallbackRate" : 0.0,
+    "routerAccuracy" : 0.92,
+    "largeAccuracy" : 0.919
+  },
+  "rows" : [ {
+    "system" : "Large model only",
+    "accuracy" : 0.919,
+    "macroF1" : 0.9139,
+    "qualityRetained" : 1.0,
+    "fallbackRate" : 1.0,
+    "p50Ms" : 711.04,
+    "p95Ms" : 1445.45,
+    "costPer1k" : 0.8912
+  }, {
+    "system" : "Small, gold labels only",
+    "accuracy" : 0.916,
+    "macroF1" : 0.9111,
+    "qualityRetained" : 0.9967,
+    "fallbackRate" : 0.0,
+    "p50Ms" : 0.04,
+    "p95Ms" : 0.07,
+    "costPer1k" : 0.0
+  }, {
+    "system" : "Small, distilled",
+    "accuracy" : 0.9195,
+    "macroF1" : 0.9144,
+    "qualityRetained" : 1.0005,
+    "fallbackRate" : 0.0,
+    "p50Ms" : 0.01,
+    "p95Ms" : 0.03,
+    "costPer1k" : 0.0
+  }, {
+    "system" : "Router (distilled small -> large)",
+    "accuracy" : 0.919,
+    "macroF1" : 0.9138,
+    "qualityRetained" : 1.0,
+    "fallbackRate" : 0.001,
+    "p50Ms" : 0.01,
+    "p95Ms" : 0.03,
+    "costPer1k" : 9.0E-4
+  } ],
+  "shiftedRows" : [ {
+    "system" : "Large model only",
+    "accuracy" : 0.597,
+    "macroF1" : 0.5883,
+    "qualityRetained" : 1.0,
+    "fallbackRate" : 1.0,
+    "p50Ms" : 712.1,
+    "p95Ms" : 1499.71,
+    "costPer1k" : 0.8903
+  }, {
+    "system" : "Small, gold labels only",
+    "accuracy" : 0.509,
+    "macroF1" : 0.4934,
+    "qualityRetained" : 0.8526,
+    "fallbackRate" : 0.0,
+    "p50Ms" : 0.03,
+    "p95Ms" : 0.07,
+    "costPer1k" : 0.0
+  }, {
+    "system" : "Small, distilled",
+    "accuracy" : 0.509,
+    "macroF1" : 0.4836,
+    "qualityRetained" : 0.8526,
+    "fallbackRate" : 0.0,
+    "p50Ms" : 0.01,
+    "p95Ms" : 0.03,
+    "costPer1k" : 0.0
+  }, {
+    "system" : "Router (distilled small -> large)",
+    "accuracy" : 0.54,
+    "macroF1" : 0.5202,
+    "qualityRetained" : 0.9045,
+    "fallbackRate" : 0.147,
+    "p50Ms" : 0.02,
+    "p95Ms" : 891.61,
+    "costPer1k" : 0.1316
+  } ],
+  "sweep" : [ {
+    "threshold" : 0.3,
+    "fallbackRate" : 0.001,
+    "accuracy" : 0.919,
+    "costPer1k" : 9.0E-4
+  }, {
+    "threshold" : 0.5,
+    "fallbackRate" : 0.009,
+    "accuracy" : 0.9185,
+    "costPer1k" : 0.0083
+  }, {
+    "threshold" : 0.6,
+    "fallbackRate" : 0.0345,
+    "accuracy" : 0.919,
+    "costPer1k" : 0.0318
+  }, {
+    "threshold" : 0.7,
+    "fallbackRate" : 0.0615,
+    "accuracy" : 0.9185,
+    "costPer1k" : 0.0567
+  }, {
+    "threshold" : 0.8,
+    "fallbackRate" : 0.097,
+    "accuracy" : 0.9195,
+    "costPer1k" : 0.0891
+  }, {
+    "threshold" : 0.9,
+    "fallbackRate" : 0.1495,
+    "accuracy" : 0.919,
+    "costPer1k" : 0.1368
+  }, {
+    "threshold" : 0.95,
+    "fallbackRate" : 0.2145,
+    "accuracy" : 0.919,
+    "costPer1k" : 0.1953
+  }, {
+    "threshold" : 0.99,
+    "fallbackRate" : 0.421,
+    "accuracy" : 0.919,
+    "costPer1k" : 0.3796
+  } ],
+  "shiftedSweep" : [ {
+    "threshold" : 0.3,
+    "fallbackRate" : 0.147,
+    "accuracy" : 0.54,
+    "costPer1k" : 0.1316
+  }, {
+    "threshold" : 0.5,
+    "fallbackRate" : 0.459,
+    "accuracy" : 0.581,
+    "costPer1k" : 0.4105
+  }, {
+    "threshold" : 0.6,
+    "fallbackRate" : 0.635,
+    "accuracy" : 0.587,
+    "costPer1k" : 0.5674
+  }, {
+    "threshold" : 0.7,
+    "fallbackRate" : 0.767,
+    "accuracy" : 0.586,
+    "costPer1k" : 0.6841
+  }, {
+    "threshold" : 0.8,
+    "fallbackRate" : 0.852,
+    "accuracy" : 0.587,
+    "costPer1k" : 0.7599
+  }, {
+    "threshold" : 0.9,
+    "fallbackRate" : 0.913,
+    "accuracy" : 0.592,
+    "costPer1k" : 0.8139
+  }, {
+    "threshold" : 0.95,
+    "fallbackRate" : 0.953,
+    "accuracy" : 0.595,
+    "costPer1k" : 0.849
+  }, {
+    "threshold" : 0.99,
+    "fallbackRate" : 0.991,
+    "accuracy" : 0.597,
+    "costPer1k" : 0.8824
+  } ],
+  "perClassF1Small" : {
+    "BILLING_REFUND" : 0.9367,
+    "DOUBLE_CHARGE" : 0.8755,
+    "LOGIN_ISSUE" : 0.9074,
+    "PASSWORD_RESET" : 0.9157,
+    "SHIPPING_DELAY" : 0.9529,
+    "ADDRESS_CHANGE" : 0.8992,
+    "DAMAGED_ITEM" : 0.9235,
+    "CANCEL_SUBSCRIPTION" : 0.907,
+    "UPGRADE_PLAN" : 0.9403,
+    "BUG_REPORT" : 0.9096,
+    "FEATURE_REQUEST" : 0.915,
+    "INVOICE_REQUEST" : 0.8897
+  },
+  "measuredLargeComputeP50Ms" : 4.32,
+  "trainingMillis" : 37421
+}
